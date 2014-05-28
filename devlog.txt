@@ -4,3 +4,5 @@ Justin's Logs:
 5/28/14 - 
 
 Frances's Logs:
+5/26/14 - I worked out our project idea with Justin and we came up with a basic idea
+5/27/14 - I came up with parts of the project: cancelations, the simulation aspect, inputting the date and we decided on the structure: Super class vs. Interface
