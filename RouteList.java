@@ -40,4 +40,10 @@ public class RouteList {
 	retArr.add(tmp);
 	return retArr;
     } // method adapted from Scheme.java (HW29)
+    
+    
+    public String finddirectRoute(String airportCodeOrigin, String airportCodeDest) {
+    	
+   public boolean isDirect() { }
+    }
 }
