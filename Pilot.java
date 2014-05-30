@@ -14,12 +14,16 @@ public class Pilot {
 	System.out.println("Please input the 3 character airport code that represents your destination: ");
 	Loc2 = user_input.next();
 
-	//verify locations
-	System.out.println("Searching for direct route...");
+	Route flight = new Route(Loc1,Loc2);
+	flight.findDirects();
 
-	if (directRoute()) {
-	    System.out.println("Direct route found. Here are the direct flights from" + loc1 + " to " + loc2);
-	    //print list
+	//verify locations
+	System.out.println("Searching for direct route(s)...");
+
+
+	if (flight.anyDirects()) {
+	    System.out.println("Direct route(s) found. Here are the airlines that fly directly from" + loc1 + " to " + loc2 + "enter the number corresponding to your desired airline:");
+	    printDirect();
 	    String routechoice;
 	    System.out.println("Please input the number of the flight you'd like to take: ");
 	routechoice = user_input.next();
