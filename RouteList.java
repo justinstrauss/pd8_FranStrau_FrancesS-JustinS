@@ -24,6 +24,10 @@ public class RouteList {
 
     }//end constructor
 
+public String[][] getList () {
+return _routeList;	
+
+}
 
     public static ArrayList<String> parse(String input) {
 	ArrayList<String> retArr = new ArrayList<String>();
