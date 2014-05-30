@@ -1,22 +1,22 @@
 import java.io.*;
 import java.util.*;
 
-public class RouteList {
+public class ListMaker {
 
-    private String[][] _routeList;
+    private String[][] _dataList;
 
-    public RouteList( String inputFile ) {
+    public ListMaker( String inputFile, int rows, int columns ) {
 
-	_routeList = new String[59637][8];
+	_routeList = new String[rows][columns];
 
 	try {
 	    Scanner sc = new Scanner( new File(inputFile) );
 	    //System.out.println( "reading in file..." );
-	    for (int r = 0; r < 59637; r++) {
+	    for (int r = 0; r < rows; r++) {
 		String line = sc.nextLine();
 		ArrayList<String> parsedLine = parse(line);
-		for (int c = 0; c < 8; c++)
-		    _routeList[r][c] = parsedLine.get(c);
+		for (int c = 0; c < columns; c++)
+		    _dataList[r][c] = parsedLine.get(c);
 	    } 
 	} 
 
@@ -24,10 +24,9 @@ public class RouteList {
 
     }//end constructor
 
-public String[][] getList () {
-return _routeList;	
-
-}
+	public String[][] getList () {
+		return _dataList;	
+	}
 
     public static ArrayList<String> parse(String input) {
 	ArrayList<String> retArr = new ArrayList<String>();
@@ -45,9 +44,4 @@ return _routeList;
 	return retArr;
     } // method adapted from Scheme.java (HW29)
     
-    
-    public String finddirectRoute(String airportCodeOrigin, String airportCodeDest) {
-    	
-   public boolean isDirect() { }
-    }
 }
