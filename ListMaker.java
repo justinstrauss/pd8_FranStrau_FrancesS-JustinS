@@ -7,7 +7,7 @@ public class ListMaker {
 
     public ListMaker( String inputFile, int rows, int columns ) {
 
-	_routeList = new String[rows][columns];
+	_dataList = new String[rows][columns];
 
 	try {
 	    Scanner sc = new Scanner( new File(inputFile) );
@@ -24,9 +24,9 @@ public class ListMaker {
 
     }//end constructor
 
-	public String[][] getList () {
-		return _dataList;	
-	}
+    public String[][] getList () {
+	return _dataList;	
+    }
 
     public static ArrayList<String> parse(String input) {
 	ArrayList<String> retArr = new ArrayList<String>();
@@ -43,5 +43,10 @@ public class ListMaker {
 	retArr.add(tmp);
 	return retArr;
     } // method adapted from Scheme.java (HW29)
+
+    // public static void main(String[] args) {
+    // 	ListMaker master = new ListMaker("routes.dat", 59637, 8);
+    // 	System.out.println(master.getList()[0][0]);
+    // }
     
 }
