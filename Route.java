@@ -16,12 +16,20 @@ public ArrayList<Integer> findDirect() {
 
 for(int r = 0; r < routes.length; r++) {
     if ((routes[r][2].equals(_origin) || routes[r][2].equals(_dest)) && 
-	(routes[r][4].equals(_origin) || routes[r][4].equals(_dest))) {
+	(routes[r][4].equals(_origin) || routes[r][4].equals(_dest)) &&
+	!(alreadyInDirects(r))) {
 	directs.add(r);
     }
 
     return directs;
 
+}
+
+public boolean alreadyInDirects(Integer r) {
+	for (int = 0; i<directs.size(); i++)
+		if (directs[i] = r)
+			return true;
+	return false;
 }
 
 public boolean anyDirects() {
