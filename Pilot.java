@@ -35,6 +35,18 @@ public class Pilot {
 	    String transferchoice;
 	    System.out.println("Please input the number of the flight you'd like to take: ");
 	transferchoice = user_input.next();
+	
+	
+	
+	
+		    System.out.println("Searching for airlines for transfer locationsthe first leg of your trip...");
+	     flight = new Route(Loc1,transferchoice);
+	     flight.findDirect();
+	     System.out.println(flight.printDirects());
+	     String leg1;
+	    System.out.println("Please pick an airline for the first leg of your trip:");
+	    leg1 = user_input.next();
+	
 	}
 	
 	String date;
