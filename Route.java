@@ -38,7 +38,7 @@ public class Route {
 
     public String printDirect() {
 	String ret = "";
-	for(int i = 0; i < directs.size(); i++) {
+	for(int i = 0; i < directs.size()/2; i++) {
 	    ret += routes[directs.get(i)][0] + "  ";
 	}
 	return ret;
