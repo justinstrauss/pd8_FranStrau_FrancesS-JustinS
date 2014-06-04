@@ -45,4 +45,20 @@ public class Route {
 
     }
 
+   public ArrayList<String> findTransfer() {
+	ArrayList<String> transfers1 = new ArrayList<Integer>();
+	ArrayList<String> transfers2 = new ArrayList<Integer>();
+
+	for(int r = 0; r < routes.length; r++) {
+	    if ( routes[r][2].equals(_origin))
+		transfers1.add(routes[r][4]);
+	    if (routes[r][4].equals(_dest))
+		transfers2.add(routes[r][2]);
+	}
+
+
+
+
+    }
+
 }
