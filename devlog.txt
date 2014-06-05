@@ -5,7 +5,9 @@ Justin's Logs:
 5/29/14 - I realized that we can generate a relatively accurate base fare for flights by using the GPS coordinates of origin and destination airports to calculate the number of miles between them. Then, we can scale this price based on the supply of remaining seats, which decreases as the date of departure approaches.  
 5/30/14 - Instead of making individual RouteList, AirlineList, and AirportList classes, I decided to modify RouteList to turning it into a generalized ListMaker class.
 6/2/14 - Frances and I troubleshooted to get the Pilot, Route, and ListMaker classes to work with each other.
-6/3/14 - 
+6/3/14 - I fixed an error in printDirects() that made it print duplicates of all of the airline codes.
+6/4/15 - I decided against having a dedicated Airlines class, since we don’t need each airline to be an object. Instead, I began coding the method to translate the airline code to the airline name within the Route class.
+6/6/14 - 
 
 Frances's Logs:
 5/26/14 - I worked out our project idea with Justin and we came up with a basic idea
