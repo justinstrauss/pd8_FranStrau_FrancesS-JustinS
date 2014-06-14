@@ -14,3 +14,8 @@ Frances's Logs:
 5/27/14 - I came up with parts of the project: cancelations, the simulation aspect, inputting the date and we decided on the structure: Super class vs. Interface
 5/28/14 - I created the base of our Driver file (Pilot.java)
 5/30/14 - I wrote most of Route.java which searches for direct routes and transfer locations
+6/2/14 - Justin and I troubleshooted to get the Pilot, Route, and ListMaker classes to work with each other.
+6/3/14 - I wrote the code to find transfer locations and to print them in the driver
+6/4/15 - I finished and fixed issues with the transfer methods
+6/11/14 - Justin and I work don planes for the next step of the project including printing out an itinerary and choosing a seat on the flight.
+
