@@ -4,12 +4,17 @@ public class Route {
 
     private String _origin;
     private String _dest;
+    private String _transfer;
+
     private ListMaker master = new ListMaker("routes.dat", 59637, 8);
+    private String[][] routes = master.getList();
+    private ListMaker master2 = new ListMaker("airlines.dat", 5996, 8);
+    private String[][] airlines = master2.getList();
+    private ListMaker master3 = new ListMaker("airports.dat", 7734, 11);
+    private String[][] airports = master3.getList();
+
     private ArrayList<Integer> directs = new ArrayList<Integer>();
-    private ArrayList<String> transfers2 = new ArrayList<String>();
-
-    private  String[][] routes = master.getList();
-
+    private ArrayList<String> transfers = new ArrayList<String>();
 
     public Route(String origin, String dest) { // add verification of codes
 	_origin = origin;
@@ -23,37 +28,39 @@ public class Route {
 	return directs;
     }
 
-    // public boolean alreadyInDirects(Integer r) {
-    // 	for (int i = 0; i<directs.size(); i++)
-    // 	    if (directs.get(i) == r)
-    // 		return true;
-    // 	return false;
-    // }
-
     public boolean anyDirects() {
-	if (findDirect().size() == 0)
-	    return false;
-	else
-	    return true;
-
+	return !(findDirect().size() == 0);
     }
 
-    public String printDirect() {
+    public boolean anyTransfers() {
+	return !(findTransfer().size() == 0);
+    }
+
+    public String printDirects() {
 	String ret = "";
 	for(int i = 0; i < directs.size()/2; i++) {
-	    ret += routes[directs.get(i)][0] + "  ";
+	    for(int j = 0; j < airlines.length; j++) {
+		if (routes[directs.get(i)][0].equals(airlines[j][3])) {
+		    ret += i + ": " + airlines[j][1] + "\n";
+		    break;
+		}
+	    }
 	}
 	return ret;
-
     }
 
     public String printTransfers() {
+	ArrayList cities = new ArrayList();
 	String ret = "";
-	for(int i = 0; i < transfers2.size()/2; i++) {
-	    ret += transfers2.get(i) + " ";
+	for(int i = 0; i < transfers.size()/2; i++) {
+	    for (int j = 0; j < cities.size(); j++)
+		if (transfers.get(i).equals(cities.get(j)))
+		    break;
+	    cities.add(transfers.get(i));
 	}
+	for (int j = 0; j < cities.size(); j++)
+	    ret += j + ": " + cities.get(j) + "\n";
 	return ret;
-
     }
 
 
@@ -72,12 +79,12 @@ public class Route {
 
 	    for(int r = 0; r < routes.length; r++)
 		if ((routes[r][2].equals(_origin) && routes[r][4].equals(_dest)))
-		    transfers2.add(routes[r][2]);
+		    transfers.add(routes[r][2]);
 	    
 	}
 	_origin = origin1;
 
-	return transfers2;
+	return transfers;
 
 
     }
