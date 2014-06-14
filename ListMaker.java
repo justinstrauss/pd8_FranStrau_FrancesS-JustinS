@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ListMaker {
 
-    private String[][] _dataList;
+    private String[][] _dataList; // 2D array form of .dat file
 
     public ListMaker( String inputFile, int rows, int columns ) {
 
@@ -20,13 +20,13 @@ public class ListMaker {
 	    } 
 	} 
 
-	catch( Exception e ) { System.out.println( "Error reading file" ); }
+	catch( Exception e ) { }//System.out.println( "Error reading file" ); }
 
     }//end constructor
 
     public String[][] getList () {
 	return _dataList;	
-    }
+    } //accessor method for Pilot class
 
     public static ArrayList<String> parse(String input) {
 	ArrayList<String> retArr = new ArrayList<String>();
@@ -43,10 +43,5 @@ public class ListMaker {
 	retArr.add(tmp);
 	return retArr;
     } // method adapted from Scheme.java (HW29)
-
-    // public static void main(String[] args) {
-    // 	ListMaker master = new ListMaker("routes.dat", 59637, 8);
-    // 	System.out.println(master.getList()[0][0]);
-    // }
     
 }
