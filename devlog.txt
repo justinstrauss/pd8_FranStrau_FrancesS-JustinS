@@ -17,5 +17,6 @@ Frances's Logs:
 6/2/14 - Justin and I troubleshooted to get the Pilot, Route, and ListMaker classes to work with each other.
 6/3/14 - I wrote the code to find transfer locations and to print them in the driver
 6/4/15 - I finished and fixed issues with the transfer methods
-6/11/14 - Justin and I work don planes for the next step of the project including printing out an itinerary and choosing a seat on the flight.
+6/11/14 - Justin and I worked on plans for the next step of the project including printing out an itinerary and choosing a seat on the flight.
+6/14/14 - I wrote all of the Plane class
 
