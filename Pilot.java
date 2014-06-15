@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Pilot {
 
@@ -8,11 +8,11 @@ public class Pilot {
 
 	String Loc1;
 	System.out.println("Please input the 3 character airport code of your take-off location: ");
-	Loc1 = user_input.next();
+	Loc1 = user_input.next().toUpperCase().trim();
 
 	String Loc2;
 	System.out.println("Please input the 3 character airport code of your destination: ");
-	Loc2 = user_input.next();
+	Loc2 = user_input.next().toUpperCase().trim();
 
 	Route flight = new Route(Loc1,Loc2);
 	flight.findDirect();
@@ -39,23 +39,31 @@ public class Pilot {
 		System.out.println( flight.printTransfers());
 		String transferchoice;
 		System.out.println("Enter the number corresponding to your desired layover city:");
-		transferchoice = user_input.next();
+		int num = Integer.parseInt(user_input.next());
+		ArrayList<String> cities = flight.getCities();
+		transferchoice = cities.get(num);
+	
+	System.out.println("Here are the airlines that fly directly from " + Loc1 + " to " + transferchoice + ".");
+	Route leg1 = new Route(Loc1,transferchoice);
+	leg1.findDirect();
+	System.out.println( leg1.printDirects());
+	String leg1choice;
+	System.out.println("Enter the number corresponding to your desired airline for the first leg of your trip:");
+	leg1choice = user_input.next();
 	
 	
-	
-	
-		System.out.println("Searching for airlines for transfer locationsthe first leg of your trip...");
-		flight = new Route(Loc1,transferchoice);
-		flight.findDirect();
-		System.out.println(flight.printDirects());
-		String leg1;
-		System.out.println("Please pick an airline for the first leg of your trip:");
-		leg1 = user_input.next();
+	System.out.println("Here are the airlines that fly directly from " + transferchoice + " to " + Loc2 + ".");
+	Route leg2 = new Route(transferchoice, Loc2);
+		leg2.findDirect();
+		System.out.println(leg2.printDirects());
+		String leg2choice;
+		System.out.println("Enter the number corresponding to your desired airline for the second leg of your trip:");
+		leg2choice = user_input.next();
 	
 	    }
 
 	    else {
-		System.out.println("No flights exist");
+		System.out.println("Sorry, no flights exist. You may have incorrectly entered the 3 character airport code or travel between your two desired airports may require more than one transfer. Please try again.");
 	    }
 	}
 	
