@@ -3,7 +3,7 @@ pd8_FranStrau_FrancesS-JustinS
 
 APCS2 Final Project
 
-Our APCS2 final project is a flight reservation system that harnesses the power of Java's object oriented paradigm to analyze and process big data relating to the world's flight routes, airlines, and airports.
+Our APCS2 final project is a non airline specific, universal flight reservation system that harnesses the power of Java's object oriented paradigm to analyze and process big data relating to the world's flight routes, airlines, and airports.
 
 How It Works
 
@@ -15,4 +15,4 @@ Concepts Learned This Term Implemented in the Project:
 Error Handling
 
 - User input for the 3 character airport code is made uppercase using the String class's toUpperCase() method and any leading or trailing whitespace is ommited using the String.trim() method.
-- 
+- If the airport code is still invalid, the user can type in a city name...
