@@ -1,14 +1,15 @@
 public class Plane {
-    private String[][] type1, type2, type3;
+    private Seat[][] type1, type2, type3, myType;
     private int daysLeft, distance;
 
     public Plane(int days, int dist) {
-	type1 = new String[14][5];
-	type2 = new String[40][7];
-	type3 = new String[44][9];
+	type1 = new Seat[14][5];
+	type2 = new Seat[40][7];
+	type3 = new Seat[44][9];
 
 	daysLeft = days;
 	distance = dist;
+	myType = null;
     }
 
 
@@ -19,35 +20,35 @@ public class Plane {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 2);
 		    if (rand == 0)
-			type1[r][c] = " X ";
+			type1[r][c].setVal( " X " );
 		    else 
-			type1[r][c] = " _ ";
+			type1[r][c].setVal( " _ " );
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type1[r][c] = " X ";
+			type1[r][c].setVal( " X ");
 		    else 
-			type1[r][c] = " _ ";
+			type1[r][c].setVal(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type1[r][c] = " X ";
+			type1[r][c].setVal(" X ");
 		    else 
-			type1[r][c] = " _ ";
+			type1[r][c].setVal(" _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type1[r][c] = " X ";
+			type1[r][c].setVal( " X ");
 		    else 
-			type1[r][c] = " _ ";
+			type1[r][c].setVal(" _ ");
 		}
 
 
 		if(c == 2)
-		    type1[r][c] = " | ";
+		    type1[r][c].setVal( " | ");
 	    }
 	}
     }
@@ -59,35 +60,35 @@ public void fill2 () {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 1);
 		    if (rand == 0)
-			type2[r][c] = " X ";
+			type2[r][c].setVal(" X ");
 		    else 
-			type2[r][c] = " _ ";
+			type2[r][c].setVal( " _ ");
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type2[r][c] = " X ";
+			type2[r][c].setVal( " X ");
 		    else 
-			type2[r][c] = " _ ";
+			type2[r][c].setVal(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type2[r][c] = " X ";
+			type2[r][c].setVal(" X ");
 		    else 
-			type2[r][c] = " _ ";
+			type2[r][c].setVal( " _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type2[r][c] = " X ";
+			type2[r][c].setVal(" X ");
 		    else 
-			type2[r][c] = " _ ";
+			type2[r][c].setVal(" _ ");
 		}
 
 
 		if(c == 3)
-		    type2[r][c] = " | ";
+		    type2[r][c].setVal( " | ");
 	    }
 	}
     }
@@ -99,60 +100,63 @@ public void fill3 () {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 2);
 		    if (rand == 0)
-			type3[r][c] = " X ";
+			type3[r][c].setVal(" X ");
 		    else 
-			type3[r][c] = " _ ";
+			type3[r][c].setVal( " _ ");
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type3[r][c] = " X ";
+			type3[r][c].setVal(" X ");
 		    else 
-			type3[r][c] = " _ ";
+			type3[r][c].setVal(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type3[r][c] = " X ";
+			type3[r][c].setVal(" X ");
 		    else 
-			type3[r][c] = " _ ";
+			type3[r][c].setVal(" _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type3[r][c] = " X ";
+			type3[r][c].setVal(" X ");
 		    else 
-			type3[r][c] = " _ ";
+			type3[r][c].setVal(" _ ");
 		}
 
 
 		if(c == 2 || c == 6)
-		    type3[r][c] = " | ";
+		    type3[r][c].setVal(" | ");
 	    }
 	}
     }
 
 
 
-    public String[][] fillSeats() {
+    public Seat[][] fillSeats() {
 	//miles
 	 if(distance < 389.62) {
 	    fill1();
-	    return type1;
+	    myType = type1;
+	    return myType1;
 	}
 	else if(distance < 4907.68) {
 	    fill2();
-	    return type2;
+	    myType = type1;
+	    return myType2;
 	}
 	else  {
 	    fill3();
-	    return type3;
+	    myType = type1;
+	    return myType;
 	}
     }
 
 	public String printSeats() {
 	    String ret = "";
-	    String[][] arr = fillSeats();
+	    Seat[][] arr = fillSeats();
 	    if(arr.length == 14)
 		ret = "    A  B     C  D " +"\n"; 
 	    if(arr.length == 40)
@@ -163,11 +167,13 @@ public void fill3 () {
 	   for(int r = 0; r < arr.length; r++) {
 	    for(int c = 0; c < arr[0].length; c++) {
 		if(c == 0 && r < 9)
-		    ret += " " + (r+1) + " " + arr[r][c];
+		    ret += " " + (r+1) + " " + arr[r][c].getVal();
 		else if (c == 0 && r >= 9)
-		    ret +=  (r+1) + " " + arr[r][c];
+		    ret +=  (r+1) + " " + arr[r][c].getVal();
+		else if(r == (int)(arr.length * (1/ 4.0)) || r == (int)(arr.length * (2/3.0)))
+		    ret += "\n" +   arr[r][c].getVal();
 		else
-		    ret +=  arr[r][c];
+		    ret +=  arr[r][c].getVal();
 		}
 	    ret += "\n";
 	    }
