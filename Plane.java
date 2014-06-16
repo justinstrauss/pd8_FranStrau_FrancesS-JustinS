@@ -1,8 +1,13 @@
 public class Plane {
-    private Seat[][] type1, type2, type3, myType;
-    private int daysLeft, distance;
+    public Seat[][] type1;
+    public Seat[][] type2;
+    public Seat[][] type3;
+    public Seat[][] myType;
+    private long daysLeft;
+    private double distance;
 
-    public Plane(int days, int dist) {
+
+    public Plane(long days, double dist) {
 	type1 = new Seat[14][5];
 	type2 = new Seat[40][7];
 	type3 = new Seat[44][9];
@@ -20,35 +25,35 @@ public class Plane {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 2);
 		    if (rand == 0)
-			type1[r][c].setVal( " X " );
+			type1[r][c] = new Seat( " X " );
 		    else 
-			type1[r][c].setVal( " _ " );
+			type1[r][c] = new Seat( " _ " );
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type1[r][c].setVal( " X ");
+			type1[r][c] = new Seat( " X ");
 		    else 
-			type1[r][c].setVal(" _ ");
+			type1[r][c] = new Seat(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type1[r][c].setVal(" X ");
+			type1[r][c] = new Seat(" X ");
 		    else 
-			type1[r][c].setVal(" _ ");
+			type1[r][c] = new Seat(" _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type1[r][c].setVal( " X ");
+			type1[r][c] = new Seat( " X ");
 		    else 
-			type1[r][c].setVal(" _ ");
+			type1[r][c] = new Seat(" _ ");
 		}
 
 
 		if(c == 2)
-		    type1[r][c].setVal( " | ");
+		    type1[r][c] = new Seat( " | ");
 	    }
 	}
     }
@@ -60,35 +65,35 @@ public void fill2 () {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 1);
 		    if (rand == 0)
-			type2[r][c].setVal(" X ");
+			type2[r][c] = new Seat(" X ");
 		    else 
-			type2[r][c].setVal( " _ ");
+			type2[r][c]= new Seat( " _ ");
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type2[r][c].setVal( " X ");
+			type2[r][c] = new Seat( " X ");
 		    else 
-			type2[r][c].setVal(" _ ");
+			type2[r][c] = new Seat(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type2[r][c].setVal(" X ");
+			type2[r][c] = new Seat(" X ");
 		    else 
-			type2[r][c].setVal( " _ ");
+			type2[r][c] = new Seat( " _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type2[r][c].setVal(" X ");
+			type2[r][c] = new Seat(" X ");
 		    else 
-			type2[r][c].setVal(" _ ");
+			type2[r][c]= new Seat(" _ ");
 		}
 
 
 		if(c == 3)
-		    type2[r][c].setVal( " | ");
+		    type2[r][c] = new Seat( " | ");
 	    }
 	}
     }
@@ -100,35 +105,35 @@ public void fill3 () {
 		if (daysLeft <= 7) {
 		    rand = (int) (Math.random() * 2);
 		    if (rand == 0)
-			type3[r][c].setVal(" X ");
+			type3[r][c] = new Seat(" X ");
 		    else 
-			type3[r][c].setVal( " _ ");
+			type3[r][c] = new Seat( " _ ");
 		}
 		else if (daysLeft <= 28) {
 		    rand = (int) (Math.random() * 5);
 		    if (rand == 0)
-			type3[r][c].setVal(" X ");
+			type3[r][c] = new Seat(" X ");
 		    else 
-			type3[r][c].setVal(" _ ");
+			type3[r][c] = new Seat(" _ ");
 		}
 		else if (daysLeft <= 84) {
 		    rand = (int) (Math.random() * 15);
 		    if (rand == 0)
-			type3[r][c].setVal(" X ");
+			type3[r][c] = new Seat(" X ");
 		    else 
-			type3[r][c].setVal(" _ ");
+			type3[r][c] = new Seat(" _ ");
 		}
 		else if (daysLeft > 84) {
 		    rand = (int) (Math.random() * 50);
 		    if (rand == 0)
-			type3[r][c].setVal(" X ");
+			type3[r][c] = new Seat(" X ");
 		    else 
-			type3[r][c].setVal(" _ ");
+			type3[r][c] = new Seat(" _ ");
 		}
 
 
 		if(c == 2 || c == 6)
-		    type3[r][c].setVal(" | ");
+		    type3[r][c] = new Seat(" | ");
 	    }
 	}
     }
@@ -136,21 +141,21 @@ public void fill3 () {
 
 
     public Seat[][] fillSeats() {
-	//miles
-	 if(distance < 389.62) {
+	//km
+	 if(distance < 627.032609) {
 	    fill1();
 	    myType = type1;
-	    return myType1;
+	    return type1;
 	}
-	else if(distance < 4907.68) {
+	else if(distance < 7898.01661) {
 	    fill2();
-	    myType = type1;
-	    return myType2;
+	    myType = type2;
+	    return type2;
 	}
 	else  {
 	    fill3();
-	    myType = type1;
-	    return myType;
+	    myType = type3;
+	    return type3;
 	}
     }
 
@@ -170,8 +175,12 @@ public void fill3 () {
 		    ret += " " + (r+1) + " " + arr[r][c].getVal();
 		else if (c == 0 && r >= 9)
 		    ret +=  (r+1) + " " + arr[r][c].getVal();
-		else if(r == (int)(arr.length * (1/ 4.0)) || r == (int)(arr.length * (2/3.0)))
-		    ret += "\n" +   arr[r][c].getVal();
+
+		/*   	else if(r == (int)(arr.length * (1/ 4.0)) || r == (int)(arr.length * (2/3.0)) && c == )
+		    ret += "\n" ;
+			//+   arr[r][c].getVal();
+			*/
+
 		else
 		    ret +=  arr[r][c].getVal();
 		}
@@ -182,10 +191,10 @@ public void fill3 () {
 	}
 
     public static void main(String[] args) {
-	Plane me1 = new Plane(12, 3000);
+	Plane me1 = new Plane(20, 7974);
 	me1.fillSeats();
 	System.out.println(me1.printSeats());
-
+  /* 
 	Plane me2 = new Plane(90, 100);
 	me2.fillSeats();
 	System.out.println(me2.printSeats());
@@ -194,9 +203,9 @@ public void fill3 () {
 	Plane me3 = new Plane(1, 5000);
 	me3.fillSeats();
 	System.out.println(me3.printSeats());
-
+  */
     }
-
+  
 
 
 
