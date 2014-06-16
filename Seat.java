@@ -1,16 +1,31 @@
 public class Seat {
-    private String myClass, val, col, type;
-    private int row , price;
+    public String myClass, val, col, type;
+    private int row;
     private Plane myPlane;
 
-    public Seat(Plane foo){
+    public Seat() {
+	myClass= "";
+	val = "";
+	col = "";
+	type = "";
+	row = 0;
+	myPlane= null;
+
+
+    }
+
+    public Seat(String _val){
+	val = _val;	
+    }
+
+  public Seat(Plane foo){
 	myPlane = foo;	
-	price = 0;
     }
 
     public void setPlace(int _row, String _col) {
 	row = _row;
 	col = _col;
+
 	if(row <= (int)(myPlane.myType.length * (1/ 4.0)))
 	    myClass = "First";
 	else if(row <= (int)(myPlane.myType.length * (2/ 3.0)))
@@ -48,14 +63,8 @@ public class Seat {
     }
 
 
-    public int getPrice(int daysLeft) {
-	if(myClass.equals("First")
 
-	   //figure out normal prices
-
-    }
-
-    public String setVal(String _val) {
+    public void setVal(String _val) {
 	val = _val;
     }
 
@@ -64,8 +73,31 @@ public class Seat {
     }
 
 
-    public String getClass() {
+    public String getmyClass() {
 	return myClass;
+    }
+
+
+    public String getType() {
+	return type;
+    }
+
+ 
+
+
+    public static void main(String[] args) {
+	Seat me1 = new Seat("VVV");
+	System.out.println(me1.getVal());
+  /* 
+	Plane me2 = new Plane(90, 100);
+	me2.fillSeats();
+	System.out.println(me2.printSeats());
+
+
+	Plane me3 = new Plane(1, 5000);
+	me3.fillSeats();
+	System.out.println(me3.printSeats());
+  */
     }
 
 
