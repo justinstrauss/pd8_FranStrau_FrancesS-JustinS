@@ -22,9 +22,16 @@ public class Route {
     private ArrayList<Integer> directs = new ArrayList<Integer>();
     private ArrayList<String> transfers = new ArrayList<String>();
 
+    public Route() {
+    }
+
     public Route(String origin, String dest) { // add verification of codes
 	_origin = origin;
 	_dest = dest;
+    }
+
+    public String[][] getRoutes() {
+	return routes;
     }
 
     public double calcDistance() {
