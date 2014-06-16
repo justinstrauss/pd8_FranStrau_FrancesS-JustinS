@@ -7,7 +7,15 @@ Justin's Logs:
 6/2/14 - Frances and I troubleshooted to get the Pilot, Route, and ListMaker classes to work with each other.
 6/3/14 - I fixed an error in printDirects() that made it print duplicates of all of the airline codes.
 6/4/15 - I decided against having a dedicated Airlines class, since we don’t need each airline to be an object. Instead, I began coding the method to translate the airline code to the airline name within the Route class.
-6/6/14 - 
+6/6/14 - Now when the list of airlines to choose from is printed, it lists the airline name instead of the 2 character code. For example, it will print American Airlines instead of AA.
+6/9/14 - Using the method Frances wrote to find transfer locations, I made the output more user friendly by printing the 3 character code followed by the name of the airport and the city it is in.
+6/10/14 - I learned about Java's built in Date class and decided that it makes more sense to store dates as Dates instead of Strings.
+6/11/14 - I wrote a method that converts the Dates to instances of the GregorianCalendar class, which can be used to calculate the number of days until a specified date.
+6/12/14 - I wrote a calcDistance method in the Route class to extract the GPS coordinates (latitude and longitude) of the origin and destination airports.
+6/13/14 - I finished the calcDistance method by adding a helper function that makes use the law of haversines, which relates to the sides and angles of spherical triangles, to determine the distance between airports in kilometers.
+6/14/14 - I wrote the print ticket method to give the user a visual representation of the selections they've made while running the program.
+6/15/14 - I tried to break the program and added means by which to handle errors in response. I also updated the README and made some finishing touches.
+6/16/14 - Success!
 
 Frances's Logs:
 5/26/14 - I worked out our project idea with Justin and we came up with a basic idea
@@ -19,4 +27,3 @@ Frances's Logs:
 6/4/15 - I finished and fixed issues with the transfer methods
 6/11/14 - Justin and I worked on plans for the next step of the project including printing out an itinerary and choosing a seat on the flight.
 6/14/14 - I wrote all of the Plane class
-
