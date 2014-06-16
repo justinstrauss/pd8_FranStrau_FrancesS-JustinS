@@ -1,10 +1,17 @@
 import java.util.*;
-//import org.joda.time.DateTime;
-//import org.joda.time.Days;
 
 public class Pilot {
 
     public static void main (String [] args) {
+
+	int routechoice = -1;
+	String transferchoice = "";
+	int leg1choice = -1;
+	int leg2choice = -1;
+	Route leg1 = new Route();
+	Route leg2 = new Route();
+	String Return = "";
+	long daysUntilReturn = -1;
 
 	Scanner user_input = new Scanner( System.in );
 
@@ -26,7 +33,7 @@ public class Pilot {
 	if (flight.anyDirects()) {
 	    System.out.println("Direct route(s) found. Here are the airlines that fly directly from " + Loc1 + " to " + Loc2 + ".");
 	    System.out.println( flight.printDirects());
-	    int routechoice = -1;
+
 	    System.out.println("Enter the number corresponding to your desired airline:");
 	    String tmp = user_input.next().trim();
 	    try {
@@ -51,7 +58,7 @@ public class Pilot {
 	    if (flight.anyTransfers()) {
 		System.out.println("Transfer location(s) found. Here are the layover cities between " + Loc1 + " and " + Loc2 + ".");
 		System.out.println( flight.printTransfers());
-		String transferchoice;
+		
 		int num = -1;
 		ArrayList<String> cities = flight.getCities();
 		System.out.println("Enter the number corresponding to your desired layover city:");
@@ -72,10 +79,10 @@ public class Pilot {
 		transferchoice = cities.get(num);
 	
 		System.out.println("Here are the airlines that fly directly from " + Loc1 + " to " + transferchoice + ".");
-		Route leg1 = new Route(Loc1,transferchoice);
+		leg1 = new Route(Loc1,transferchoice);
 		leg1.findDirect();
 		System.out.println( leg1.printDirects());
-		int leg1choice = -1;
+		
 		System.out.println("Enter the number corresponding to your desired airline:");
 		String tmp1 = user_input.next().trim();
 		try {
@@ -94,10 +101,10 @@ public class Pilot {
 	
 	
 		System.out.println("Here are the airlines that fly directly from " + transferchoice + " to " + Loc2 + ".");
-		Route leg2 = new Route(transferchoice, Loc2);
+		leg2 = new Route(transferchoice, Loc2);
 		leg2.findDirect();
 		System.out.println(leg2.printDirects());
-		int leg2choice = -1;
+		
 		System.out.println("Enter the number corresponding to your desired airline:");
 		String tmp2 = user_input.next().trim();
 		try {
@@ -152,6 +159,7 @@ public class Pilot {
 	Calendar todayCal = new GregorianCalendar();
 	todayCal.setTime(todaysDate);
 
+	boolean roundtrip = false;
 	System.out.println("Do you wish to book a return flight as well? (yes/no)");
 	String ans = user_input.next();
 
@@ -159,10 +167,10 @@ public class Pilot {
 	    System.out.println("Input not recognized. We will assume you only want to book one way.");
 
 	if (ans.equals("yes")) {
-
+	    roundtrip = true;
 	    Date dateReturn = new Date();
-	    System.out.println("Please input the return date of your trip in mm/dd/yyyy format:");
-	    String Return = user_input.next();
+	    System.out.println("Please input the return date of your trip in yyyy/mm/dd format:");
+	    Return = user_input.next();
 
 	    ArrayList<String> arr1 = new ArrayList<String>();
 	    String tmp4 = "";
@@ -199,8 +207,8 @@ public class Pilot {
 
 	    Calendar returnCal = new GregorianCalendar();
 	    returnCal.setTime(dateReturn);
-	    long daysUntilReturn = daysBetween(todayCal,returnCal) - 693991;
-	    System.out.println("days till return: " + daysUntilReturn);
+	    daysUntilReturn = daysBetween(todayCal,returnCal) - 693991;
+	    //System.out.println("days till return: " + daysUntilReturn);
 	}
 
 	if (todaysDate.after(dateDepart)) {
@@ -211,16 +219,55 @@ public class Pilot {
 	Calendar departCal = new GregorianCalendar();
 	departCal.setTime(dateDepart);
 	long daysUntilDepart = daysBetween(todayCal,departCal) - 693991;
-	System.out.println("days till depart: " + daysUntilDepart); //
+	//System.out.println("days till depart: " + daysUntilDepart);
 
 
-	System.out.println("distance: " + flight.calcDistance()); //
+	//System.out.println("distance: " + flight.calcDistance());
 
-	//determine price
-	//create seating chart, print seating chart
+	String name;
+	System.out.println("What is the name of the ticket holder?");
+	name = user_input.next();
 
-
-
+	System.out.println("Your reservation is complete. Here is your itinerary:");
+	
+	System.out.println();
+	int flightNum = 1;
+	System.out.println("Ticket Holder: " + name);
+	System.out.println();
+	System.out.println("Flight " + flightNum + ": " + depart + " (in " + daysUntilDepart + " days)");
+	flightNum++;
+	if (flight.anyDirects()) {
+	    System.out.println(flight.getRoutes()[flight.getDirects().get(routechoice)][0] + ": " + Loc1 + " to " + Loc2);
+	    System.out.println("Distance (km): " + flight.calcDistance() + " Time (hr): " + flight.calcDistance()/850);
+	}
+	else {
+	    System.out.println(leg1.getRoutes()[leg1.getDirects().get(leg1choice)][0] + ": " + Loc1 + " to " + transferchoice);
+	    System.out.println("Distance (km): " + leg1.calcDistance() + " Time (hr): " + leg1.calcDistance()/850);
+	    System.out.println();
+	    System.out.println("Flight " + flightNum + ": " + depart + " (in " + daysUntilDepart + " days)");
+	    flightNum++;
+	    System.out.println(leg2.getRoutes()[leg2.getDirects().get(leg2choice)][0] + ": " + transferchoice + " to " + Loc2);
+	    System.out.println("Distance (km): " + leg2.calcDistance() + " Time (hr): " + leg2.calcDistance()/850);
+	}
+	if (roundtrip) {
+	    System.out.println();
+	    System.out.println("Flight " + flightNum + ": " + Return + " (in " + daysUntilReturn + " days)");
+	    flightNum++;
+	    if (flight.anyDirects()) {
+		System.out.println(flight.getRoutes()[flight.getDirects().get(routechoice)][0] + ": " + Loc2 + " to " + Loc1);
+		System.out.println("Distance (km): " + flight.calcDistance() + " Time (hr): " + flight.calcDistance()/850);
+	    }
+	    else {
+		System.out.println(leg2.getRoutes()[leg2.getDirects().get(leg2choice)][0] + ": " + Loc2 + " to " + transferchoice);
+		System.out.println("Distance (km): " + leg2.calcDistance() + " Time (hr): " + leg2.calcDistance()/850);
+		System.out.println();
+		System.out.println("Flight " + flightNum + ": " + Return + " (in " + daysUntilReturn + " days)");
+		flightNum++;
+		System.out.println(leg1.getRoutes()[leg1.getDirects().get(leg1choice)][0] + ": " + transferchoice + " to " + Loc1);
+		System.out.println("Distance (km): " + leg1.calcDistance() + " Time (hr): " + leg1.calcDistance()/850);
+	    }
+	}
+	System.out.println();
     }
 
     public static long daysBetween(Calendar startDate, Calendar endDate) {  
