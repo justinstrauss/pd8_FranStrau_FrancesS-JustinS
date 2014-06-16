@@ -24,4 +24,4 @@ Error Handling:
 
 - User input for the 3 character airport code is made uppercase using the String class's toUpperCase() method and any leading or trailing whitespace is ommited using the String.trim() method.
 - When the user is supposed to type a number to make a selection, our code makes sure its a number and if it is, it verifies that it's within the appropriate range.
-- 
+- If the date entered for either the departure flight or the return flight is before today's date, an error message will be printed. Likewise, if the date for the departure flight is after the return flight, the dates will be swapped.
