@@ -222,6 +222,175 @@ public class Pilot {
 	//System.out.println("days till depart: " + daysUntilDepart);
 
 
+	//***************************************************************
+
+
+	if(ans.equals("yes") &&  !(flight.anyDirects())) {
+	Plane Flight4 = new Plane(daysUntilDepart, flight.calcDistance() / 2);
+	System.out.println("Here is the seating chart for the first leg of your first flight");
+	Flight4.fillSeats();
+	System.out.println(Flight4.printSeats());
+
+	String seatChoice4;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice4 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat4 = new Seat(Flight4);
+	seat4.setPlace( (int)Integer.parseInt(seatChoice4.substring(0, seatChoice4.length() - 1)), seatChoice4.substring(seatChoice4.length() -1));
+	System.out.println("You have chosen seat " + seatChoice4 + " which is a/an " + seat4.getType() + " seat in class " + seat4.getmyClass());
+
+
+
+	Plane Flight5 = new Plane(daysUntilDepart, flight.calcDistance() / 2);
+	System.out.println("Now choose a seat for the second leg of your first flight, here is the seating chart:");
+	Flight5.fillSeats();
+	System.out.println(Flight5.printSeats());
+
+	String seatChoice5;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice5 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat5 = new Seat(Flight5);
+	seat5.setPlace( (int)Integer.parseInt(seatChoice5.substring(0, seatChoice5.length() - 1)), seatChoice5.substring(seatChoice5.length() -1));
+	System.out.println("You have chosen seat " + seatChoice5 + " which is a/an " + seat5.getType() + " seat in class " + seat5.getmyClass());
+
+
+
+	Plane Flight6 = new Plane(daysUntilReturn, flight.calcDistance() / 2);
+	System.out.println("Now choose a seat for the first leg of your return flight, here is the seating chart:");
+	Flight6.fillSeats();
+	System.out.println(Flight6.printSeats());
+
+	String seatChoice6;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice6 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat6 = new Seat(Flight6);
+	seat6.setPlace( (int)Integer.parseInt(seatChoice6.substring(0, seatChoice6.length() - 1)), seatChoice6.substring(seatChoice6.length() -1));
+	System.out.println("You have chosen seat " + seatChoice6 + " which is a/an " + seat6.getType() + " seat in class " + seat6.getmyClass());
+
+
+	Plane Flight7 = new Plane(daysUntilReturn, flight.calcDistance() / 2);
+	System.out.println("Now choose a seat for the second leg of your return flight, here is the seating chart:");
+	Flight7.fillSeats();
+	System.out.println(Flight7.printSeats());
+
+	String seatChoice7;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice7 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat7 = new Seat(Flight7);
+	seat7.setPlace( (int)Integer.parseInt(seatChoice7.substring(0, seatChoice7.length() - 1)), seatChoice7.substring(seatChoice7.length() -1));
+	System.out.println("You have chosen seat " + seatChoice7 + " which is a/an " + seat7.getType() + " seat in class " + seat7.getmyClass());
+
+
+
+	}
+
+
+
+	else if(ans.equals("yes") && (flight.anyDirects())) {
+	    Plane Flight1 = new Plane(daysUntilDepart, flight.calcDistance());
+	System.out.println("Here is the seating chart for your first flight");
+	Flight1.fillSeats();
+	System.out.println(Flight1.printSeats());
+
+	String seatChoice1;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice1 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat1 = new Seat(Flight1);
+	seat1.setPlace( (int)Integer.parseInt(seatChoice1.substring(0, seatChoice1.length() - 1)), seatChoice1.substring(seatChoice1.length() -1));
+	System.out.println("You have chosen seat " + seatChoice1 + " which is a/an " + seat1.getType() + " seat in class " + seat1.getmyClass());
+
+
+
+	Plane Flight2 = new Plane(daysUntilReturn, flight.calcDistance());
+	System.out.println("Now choose a seat for your return trip, here is the seating chart for your second flight");
+	Flight2.fillSeats();
+	System.out.println(Flight2.printSeats());
+
+	String seatChoice2;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice2 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat2 = new Seat(Flight1);
+	seat2.setPlace( (int)Integer.parseInt(seatChoice2.substring(0, seatChoice2.length() - 1)), seatChoice2.substring(seatChoice2.length() -1));
+	System.out.println("You have chosen seat " + seatChoice2 + " which is a/an " + seat2.getType() + " seat in class " + seat2.getmyClass());
+	}
+
+	else if (ans.equals("no") && !(flight.anyDirects())){
+	Plane Flight8 = new Plane(daysUntilDepart, flight.calcDistance() / 2);
+	System.out.println("Here is the seating chart for the first leg of your flight");
+	Flight8.fillSeats();
+	System.out.println(Flight8.printSeats());
+
+	String seatChoice8;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice8 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat8 = new Seat(Flight8);
+	seat8.setPlace( (int)Integer.parseInt(seatChoice8.substring(0, seatChoice8.length() - 1)), seatChoice8.substring(seatChoice8.length() -1));
+	System.out.println("You have chosen seat " + seatChoice8 + " which is a/an " + seat8.getType() + " seat in class " + seat8.getmyClass());
+
+
+
+	Plane Flight9 = new Plane(daysUntilDepart, flight.calcDistance() / 2);
+	System.out.println("Now choose a seat for the second leg of your flight, here is the seating chart:");
+	Flight9.fillSeats();
+	System.out.println(Flight9.printSeats());
+
+	String seatChoice9;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice9 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat9 = new Seat(Flight9);
+	seat9.setPlace( (int)Integer.parseInt(seatChoice9.substring(0, seatChoice9.length() - 1)), seatChoice9.substring(seatChoice9.length() -1));
+	System.out.println("You have chosen seat " + seatChoice9 + " which is a/an " + seat9.getType() + " seat in class " + seat9.getmyClass());
+
+
+
+
+
+	}
+	else {
+   Plane Flight3 = new Plane(daysUntilDepart, flight.calcDistance());
+	System.out.println("Here is the seating chart for your  flight");
+	Flight3.fillSeats();
+	System.out.println(Flight3.printSeats());
+
+	String seatChoice3;
+	System.out.println("Please input your seat choice (ex: 13A)");
+	seatChoice3 = user_input.next().trim();
+
+	//add error handling
+
+	Seat seat3 = new Seat(Flight3);
+	seat3.setPlace( (int)Integer.parseInt(seatChoice3.substring(0, seatChoice3.length() - 1)), seatChoice3.substring(seatChoice3.length() -1));
+	System.out.println("You have chosen seat " + seatChoice3 + " which is a/an " + seat3.getType() + " seat in class " + seat3.getmyClass());
+
+
+	}
+
+
+	//***************************************************************
+
 	//System.out.println("distance: " + flight.calcDistance());
 
 	String name;
